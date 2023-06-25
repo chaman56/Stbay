@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div style="display: flex;">
+  <div class="sidebar" style="width: 200px;height: 100vh;">
+    <%- include('partials/sidebar') %>
+  </div>
+  <div class="mainpage" style="width: 100%;">
+    <div style="flex-direction: column;">
+      <form action="/postrequest?id=<%=user.id%>" method="post">
+        <input type="text" name="name" placeholder="your Name...">
+        <input type="text" name="title" id="" placeholder="Title of product..." required>
+        <select style="border: 1px solid gray;" name="category" id="" required>
+          <option value="buy">For Buying</option>
+          <option value="rent">On Rent </option>
+        </select>
+        <textarea type="text" name="description" id="" placeholder="description of product."></textarea>
+        <input type="submit" value="Post Request">
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  input{
+    padding: 5px 10px;
+    border: 1px solid black;
+  }
+  textarea{
+    padding: 10px;
+    height: 100px;
+    border: 1px solid black;
+    resize: none;
+  }
+</style>
+
+<%- include('partials/footer') %>

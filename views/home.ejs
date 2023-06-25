@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+<div style="display: flex;">
+  <div class="sidebar" style="width: 200px;height: 100vh;">
+    <%- include('partials/sidebar') %>
+  </div>
+  <div class="mainpage">
+    <%- include('partials/banner') %> <br>
+    <%- include('partials/filter') %>
+    
+    <div class="buyrent flex">
+      <div><a href="/tobuy?id=<%=user.id%>"> Buy </a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/torent?id=<%=user.id%>"> Rental's </a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/requests?id=<%=user.id%>">Requests</a></div>
+    </div>
+    <div style=" width: 100%;padding: 7px 0;">
+      <div class="productarea" id="productarea">
+        <% for(let i = 0; i < data.length; i++){ %>
+          <div class="blocks" data-sort="<%= data[i].price %>" style="margin: 1rem 10px;display: inline-block;">
+            <div class="block-image" style="width: inherit;display: flex;justify-content: center;background: black;">
+              <img  src="<%= data[i].imageurl %>" height="inherit" alt="">
+            </div>
+            <div style="padding: 5px;">
+              <div style="display: flex;justify-content: space-between;">
+                <div><h3> <%= data[i].title %> </h3></div>
+                <div>Qty : <span style="color: rgb(0, 23, 128);"><%= data[i].qty %></span></div>
+              </div>
+              <p style="font-size: 0.8rem;color: rgb(79, 79, 79);"><%= data[i].description.substring(0, 40)%> <% if(data[i].description.length > 40) { %><span>...</span><% } %></p>
+              <div style="display: flex;justify-content: space-between;align-items: center;">
+                <div>Price : <span class="prices"  style="color: rgb(0, 174, 12);"> ₹ <%= data[i].price %></span></div>
+                <a class="button" href="/getproduct?id=<%=user.id%>&pid=<%=data[i].id%>">Buy</a>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,59 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div style="display: flex;">
+  <div class="sidebar" style="width: 200px;height: 100vh;">
+    <%- include('partials/sidebar') %>
+  </div>
+  <div class="mainpage" style="width: 100%;">
+    <div style="display: flex;flex-direction: column;width: 100%;max-width: 400px;">
+      <div style="width: 100%;">
+        <div  style="width: 100%;height: 200px;background-color: black;display: flex;justify-content: center;margin: 0 10px;">
+          <img src="<%= product.imageurl %>" height="200px" alt="">
+        </div>
+        <div style="padding: 5px;">
+          <div style="display: flex;justify-content: space-between;">
+            <div><h3> <%= product.title %> </h3></div>
+            <div>Qty : <span style="color: rgb(0, 23, 128);"><%= product.qty %></span></div>
+          </div>
+          <p style="font-size: 0.8rem;color: rgb(79, 79, 79);"><%= product.description.substring(0, 40) %> <% if(product.description.length > 40) { %> <span>...</span> <% } %></p>
+          <div style="display: flex;justify-content: space-between;align-items: center;">
+            <div>Price : <span style="color: rgb(0, 174, 12);"> ₹ <%= product.price %></span></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div>Owner's Email : <%=owner.email %></div><br><hr><br>
+        <p>If any query feel free to message.</p>
+        <div style="margin-top: 1rem;">
+          <form action="/postorder?id=<%=user.id%>&pid=<%=product.id%>" method="post">
+            <input type="text" name="hostel" placeholder="Hostel Name...">
+            <input type="number" name="room" placeholder="Room Number...">
+            <input type="text" name="college" placeholder="college Name...">
+            <input type="submit">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  input{
+    padding: 5px 10px;
+    border: 1px solid black;
+  }
+  textarea{
+    padding: 10px;
+    height: 100px;
+    border: 1px solid black;
+    resize: none;
+  }
+</style>
+
+<%- include('partials/footer') %>

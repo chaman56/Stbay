@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+<div style="display: flex;">
+  <div class="sidebar" style="width: 200px;height: 100vh;">
+    <%- include('partials/sidebar') %>
+  </div>
+  <div class="mainpage">
+    <div class="buyrent flex">
+      <div><a href="/tobuy?id=<%=user.id%>"> Buy </a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/torent?id=<%=user.id%>"> Rental's </a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/requests?id=<%=user.id%>">Requests</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/donations?id=<%=user.id%>">donations</a></div>
+    </div>
+    <div id="productarea">
+      <h1 style="font-size: 3rem;font-family: Arial, Helvetica, sans-serif;color: green;">Order Successful!</h1>
+    </div>
+  </div>
+</div>
+<style>
+  #productarea{
+    width: 100%;flex-direction: column;padding: 1rem;
+  }
+</style>
+<%- include('partials/footer') %>

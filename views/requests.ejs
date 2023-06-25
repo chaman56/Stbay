@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+<div style="display: flex;">
+  <div class="sidebar" style="width: 200px;height: 100vh;">
+    <%- include('partials/sidebar') %>
+  </div>
+  <div class="mainpage">
+    <%- include('partials/filter') %>
+    <div class="buyrent flex">
+      <div><a href="/tobuy?id=<%=user.id%>"> Buy </a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/torent?id=<%=user.id%>"> Rental's </a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/requests?id=<%=user.id%>">Requests</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="/donations?id=<%=user.id%>">donations</a></div>
+    </div>
+    <div id="productarea">
+      <% for(let i = 0; i < data.length; i++){ %>
+        <div class="blocks" style="width: 95%;max-width: 1000px; border-bottom: 1px solid gray; padding: 15px 10px;">
+            <div><%= data[i].name %> requested...</div>
+            <div class="flex" style="justify-content: space-between;"><span style="color: rgb(42, 50, 165);font-size: 1.2rem;"><%= data[i].title %></span><span style="background: orange;padding: 2px 5px;">to <%= data[i].category %></span></div>
+            <div><p style="font-size: 0.9rem;color: rgb(74, 61, 61);"> <%= data[i].description %></p> </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+<style>
+  #productarea{
+    width: 100%;flex-direction: column;padding: 1rem;
+  }
+</style>
+<%- include('partials/footer') %>

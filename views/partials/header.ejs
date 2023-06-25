@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stbay</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script>
+    const productarea = document.getElementById("productarea");
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#productarea .blocks").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    $(document).ready(function(){
+      $("#increasing").on("click", function() {
+        let container = document.querySelector('.productarea');
+        let elements = Array.from(container.children); 
+        let sorted = elements.sort(function(a,b){ 
+          return +a.dataset.sort - +b.dataset.sort
+        });
+        container.innerHTML = '';
+        sorted.forEach(elm => container.append(elm));
+      });
+    });
+    $(document).ready(function(){
+      $("#decreasing").on("click", function() {
+        let container = document.querySelector('.productarea');
+        let elements = Array.from(container.children); 
+        let sorted = elements.sort(function(a,b){ 
+          return +a.dataset.sort - +b.dataset.sort
+        });
+        container.innerHTML = '';
+        sorted.forEach(elm => container.prepend(elm));
+      });
+    });
+  </script>
+</head>
+<body>

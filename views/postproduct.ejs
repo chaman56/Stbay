@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div style="display: flex;">
+  <div class="sidebar" style="width: 200px;height: 100vh;">
+    <%- include('partials/sidebar') %>
+  </div>
+  <div class="mainpage" style="width: 100%;">
+    <div style="flex-direction: column;">
+      <form action="/postproduct?id=<%=user.id%>" method="post" enctype="multipart/form-data">
+        <input type="text" name="title" id="" placeholder="Title of product." required>
+        <div>
+          <input type="number" name="price" id="" placeholder="Enter Price.. " required>
+          <input type="number" name="qty" placeholder="Enter Quantity.." required>
+        </div>
+        <label for="thumbnail">
+          <p style="font-size: 0.7em;">Chose image of your product </p> 
+          <input type="file" name="thumbnail" id="thumbnail" required>
+        </label>
+        <textarea type="text" name="description" id="" placeholder="description of product."></textarea>
+        <input type="submit" value="Add">
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  input{
+    padding: 5px 10px;
+    border: 1px solid black;
+  }
+  textarea{
+    padding: 10px;
+    height: 100px;
+    border: 1px solid black;
+    resize: none;
+  }
+</style>
+
+<%- include('partials/footer') %>

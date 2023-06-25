@@ -1,0 +1,54 @@
+<div class="overlay-menu">
+  <div id="menu">
+    <a href="/home?id=<%=user.id%>">Home</a>
+    <a href="/profile?id=<%=user.id%>">Profile</a>
+    <div style="padding: 5px 0;"><hr></div>
+    <a href="/tobuy?id=<%=user.id%>" >Buy Now</a>
+    <a href="/torent?id=<%=user.id%>">Rental Products</a>
+    <a href="/donations?id=<%=user.id%>">Donations</a>
+    <a href="/requests?id=<%=user.id%>">Requests</a>
+    <div style="padding: 5px 0;"><hr></div>
+    <a href="/addproduct?id=<%=user.id%>">+Add Product</a>
+    <a href="/rentproduct?id=<%=user.id%>">+Rent Product</a>
+    <a href="/donate?id=<%=user.id%>">+Donate Now</a>
+    <a href="/requestproduct?id=<%=user.id%>">+Request Product</a>
+    <div style="padding: 5px 0;"><hr></div>
+    <a id="filterbtn" onclick="showfilter()" style="cursor: pointer;">Filter</a>
+    <div id="filter">
+      Set price Range: <br>
+      <input type="number" placeholder="Minimum value..">
+      <input type="number" placeholder="Maximum value..">
+      <button onclick="togglefilter()">Apply</button>
+    </div>
+    <div style="padding: 5px 0;"><hr></div>
+    <a href="/about?id=<%=user.id%>" onclick="location.href=this.href+'?id='+uid">About</a>
+    <a href="#contact?id=<%=user.id%>">Contact</a>
+  </div>
+</div>
+<script>
+  const filter = document.getElementById("filter");
+  const filterbtn = document.getElementById("filterbtn");
+  filter.style.display = 'none';
+  function showfilter() {
+    filter.style.display = "block";
+    filterbtn.setAttribute("onclick", "hidefilter()");
+  }
+  function hidefilter() {
+    filter.style.display = "none";
+    filterbtn.setAttribute("onclick", "showfilter()");
+  }
+</script>
+
+<style>
+  .sidemenu, .overlay-menu{
+    padding: 10px;
+    padding-top: 55px;
+  }
+  .sidemenu a,.overlay-menu a{
+    display: block;
+    padding: 5px 10px;
+  }
+  .sidemenu a:hover,.overlay-menu a:hover{
+    background-color: rgb(188, 188, 188);
+  }
+</style>
