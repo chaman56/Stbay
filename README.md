@@ -1,6 +1,10 @@
-# Stbay
+### Stbay
 This is an ecommerce site for campus students to buy, sell, rent, donate and request products.
-  
+
+### demo at
+https://www.youtube.com/watch?v=qDcpoXq4f10
+
+
 #frontend  
     I have used ejs templates for the front end. All of which are in views folder.  
     -partials folder inside views contains the files like navbar, sidebar, header, footer etc.  
